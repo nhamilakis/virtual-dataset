@@ -1,0 +1,48 @@
+from pathlib import Path
+import warnings
+
+# noinspection PyProtectedMember
+import vdataset._mount_samples as cmd_file
+
+
+def test_yaml_missing(yaml_missing_cmd):
+
+    with warnings.catch_warnings(record=True) as w:
+        # Cause all warnings to always be triggered.
+        warnings.simplefilter("always")
+        result = yaml_missing_cmd.load_dict_from_file(Path('some_file.yaml'))
+
+        assert len(w) == 1, "Warning object should exist"
+        assert issubclass(w[-1].category, RuntimeWarning), "Warning should be of type RuntimeWarning"
+        assert "yaml" in str(w[-1].message), "Warning message should be about yaml loading"
+        assert result == {}, "result should be an empty dictionary"
+
+
+def test_yaml_loading():
+    file = Path('data/test1.yaml')
+    if not file.is_file():
+        warnings.warn('File loading could not be tested as data folder is missing')
+        return
+
+    item = cmd_file.load_dict_from_file(file)
+    assert isinstance(item, dict), "result should be a dict"
+    assert 'files' in item.keys(), "files should be a key in the dict"
+    assert isinstance(item["files"], list), "dict['files'] should be a list"
+    assert len(item["files"]) == 5, "list should be of size 5"
+
+
+def test_json_loading():
+    file = Path('data/test1.json')
+    if not file.is_file():
+        warnings.warn('File loading could not be tested as data folder is missing')
+        return
+
+    item = cmd_file.load_dict_from_file(file)
+    assert isinstance(item, dict), "result should be a dict"
+    assert 'files' in item.keys(), "files should be a key in the dict"
+    assert isinstance(item["files"], list), "dict['files'] should be a list"
+    assert len(item["files"]) == 5, "list should be of size 5"
+
+
+
+
