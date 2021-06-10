@@ -3,12 +3,19 @@ import warnings
 from pathlib import Path
 from typing import Union, List, Dict, Optional
 
-from ._core import mount, FileTargetList, FileTarget
 
 try:
     import yaml
 except ImportError:
     yaml = None
+
+try:
+    from icecream import ic
+except ImportError:  # Graceful fallback if IceCream isn't installed.
+    ic = lambda *a: None if not a else (a[0] if len(a) == 1 else a)  # noqa
+
+
+from ._core import mount, FileTargetList, FileTarget
 
 
 def load_dict_from_file(file_path: Union[str, Path]) -> Union[Dict, List]:
@@ -68,6 +75,7 @@ def mount_from_location(location: Union[str, Path], *,
                 source_file=f,
                 target_location=(f.relative_to(location)).parent
             ))
+        ic(file_list)
         files = file_list
 
     # return mount location

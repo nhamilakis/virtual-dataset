@@ -47,15 +47,19 @@ def mount(input_files: Union[FileList, Dict], *, tmp_prefix: Optional[Union[Path
         raise ValueError(f'Prefix must be a valid directory')
 
     # make root dir
-    root_dir = Path(tempfile.mkdtemp(prefix=tmp_prefix))
+    if tmp_prefix:
+        root_dir = Path(tempfile.mkdtemp(prefix=f"{tmp_prefix}/"))
+    else:
+        root_dir = Path(tempfile.mkdtemp())
 
     file_list: FileTargetList = parse_input(input_files, root_dir)
 
     for item in file_list:
         # create folder if necessary
-        item.target_location.mkdir(exist_ok=True, parents=True)
+        location = root_dir / item.target_location
+        location.mkdir(exist_ok=True, parents=True)
         # symlink
-        (item.target_location / item.source_file.name).symlink_to(item.source_file)
+        (location / item.source_file.name).symlink_to(item.source_file.resolve())
 
     # return root location
     return root_dir
