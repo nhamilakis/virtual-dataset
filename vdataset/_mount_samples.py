@@ -75,7 +75,6 @@ def mount_from_location(location: Union[str, Path], *,
                 source_file=f,
                 target_location=(f.relative_to(location)).parent
             ))
-        ic(file_list)
         files = file_list
 
     # return mount location
