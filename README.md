@@ -38,18 +38,6 @@ Input can be of multiple format:
  - A simple list of files `List[Path, str]` that can be anywhere on your machine.
  - A dictionary allows preserving (or specifying) a file structure inside the created folder
 ex:
-```json:data/complex.json
-
-```
-
-- Input can be taken from yaml or json files (using mount_from_index_file function)
-
-- Input can also be another directory (using mount_from_location function)
-
-## Example 
-
-Using the following dictionary  :
-
 ```python
 obj = {
     "dir1": ['file1.txt', 'file2.txt', 'file3.txt', 'file4.txt'],
@@ -67,9 +55,9 @@ obj = {
     },
     "dir4": ['file16.txt', 'file17.txt', 'file18.txt']
 }
-```
-We can create a temporary directory preserving the directory structure 
 
+```
+Creates the following temp folder : 
 ```
 tmpdir
 ├── dir1
@@ -101,11 +89,15 @@ tmpdir
 ```
 
 
+- Input can be taken from yaml or json files (using mount_from_index_file function)
+
+- Input can also be another directory (using mount_from_location function)
+
 ## CLI
 
 A command line utility exists to allow usage from outside python.
 
-When installing the package a command line is installed in the current environment.
+When installing the package the `vmount` command is installed in the current environment.
 
 ```bash
 ❯ vmount
