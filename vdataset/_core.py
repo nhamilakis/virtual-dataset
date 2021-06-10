@@ -14,11 +14,14 @@ class FileTarget:
 
 FileTargetList = NewType('FileTargetList', List[FileTarget])
 FileList = NewType('FileList', Union[FileTargetList, List[Union[Path, str]]])
-# todo check typing to maybe separate final product from inputs to allow all types to be inserted into parser
 
 
 def parse_input(file_object: FileList, root_dir: Path) -> FileTargetList:
-    """ Builds a FileTarget list from a dict or list object """
+    """  Builds a FileTarget list from a dict or list object
+    :param file_object: the object to parse
+    :param root_dir: the root directory to use a the target location
+    :return: FileTargetList
+    """
     result = FileTargetList([])
     if isinstance(file_object, dict):
         for key, value in file_object.items():
@@ -40,6 +43,12 @@ def parse_input(file_object: FileList, root_dir: Path) -> FileTargetList:
 
 
 def mount(input_files: Union[FileList, Dict], *, tmp_prefix: Optional[Union[Path, str]] = None) -> Optional[Path]:
+    """ Creates a virtual dataset from input file list
+
+    :param input_files: list of files to include in the mounted dataset
+    :param tmp_prefix: prefix of location to create the temporary files
+    :return: location of the new virtual dataset
+    """
     if isinstance(tmp_prefix, str):
         tmp_prefix = Path(tmp_prefix)
 

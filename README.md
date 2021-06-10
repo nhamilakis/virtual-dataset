@@ -38,6 +38,7 @@ Input can be of multiple format:
  - A simple list of files `List[Path, str]` that can be anywhere on your machine.
  - A dictionary allows preserving (or specifying) a file structure inside the created folder
 ex:
+
 ```python
 obj = {
     "dir1": ['file1.txt', 'file2.txt', 'file3.txt', 'file4.txt'],
@@ -55,9 +56,10 @@ obj = {
     },
     "dir4": ['file16.txt', 'file17.txt', 'file18.txt']
 }
-
 ```
+
 Creates the following temp folder : 
+
 ```
 tmpdir
 ├── dir1

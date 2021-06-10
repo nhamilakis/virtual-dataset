@@ -7,6 +7,7 @@ from ._core import unmount
 
 
 def argument_parser():
+    """ Builds argument parser """
     parser = argparse.ArgumentParser()
 
     # actions
@@ -26,6 +27,7 @@ def argument_parser():
 
 
 def main(argv=None):
+    """ CLI entry point """
     parser = argument_parser()
 
     if argv:

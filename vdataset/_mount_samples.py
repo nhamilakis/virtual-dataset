@@ -19,6 +19,7 @@ from ._core import mount, FileTargetList, FileTarget
 
 
 def load_dict_from_file(file_path: Union[str, Path]) -> Union[Dict, List]:
+    """ Loads a dict or a list from a .yaml or .json file """
     if isinstance(file_path, str):
         file_path = Path(file_path)
 
@@ -37,6 +38,13 @@ def load_dict_from_file(file_path: Union[str, Path]) -> Union[Dict, List]:
 
 
 def key_extractor(obj: Dict, key: str):
+    """  Extract a specific key from a dictionary
+
+    :param obj: the source dictionary
+    :param key: the key to extract in a string dot delimited format : key1.key2.subItem
+    :return: A dict/list if the key exists
+    :raises KeyError if the key is not valid
+    """
     if key == "":
         return obj
 
@@ -52,6 +60,14 @@ def key_extractor(obj: Dict, key: str):
 def mount_from_location(location: Union[str, Path], *,
                         file_regexp: Optional[List[str]] = None, keep_structure: bool = False,
                         tmp_prefix: Optional[Union[Path, str]] = None):
+    """ Wrapper around the mount function to use a directory as the input.
+
+    :param location: directory to use as the input.
+    :param file_regexp: list of regular expression to match files
+    :param keep_structure: boolean specifying if the folder structure should remain in the virtual dataset
+    :param tmp_prefix: prefix location to add mounted dataset
+    :return: path to the newly created dataset.
+    """
     if isinstance(location, str):
         location = Path(location)
 
@@ -83,6 +99,13 @@ def mount_from_location(location: Union[str, Path], *,
 
 def mount_from_index_file(file_location: Union[str, Path], *,  key: Optional[str] = None,
                           tmp_prefix: Optional[Union[Path, str]] = None):
+    """ Wrapper around the mount function to use with a .json/yaml file as input
+
+    :param file_location: location of the yaml/json file
+    :param key: if set it contains the path to the sub-item to be used in the file
+    :param tmp_prefix: prefix location to add mounted dataset
+    :return: path to the newly created dataset.
+    """
     if isinstance(file_location, str):
         file_location = Path(file_location)
 
