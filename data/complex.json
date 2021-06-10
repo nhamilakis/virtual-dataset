@@ -1,0 +1,18 @@
+{
+  ".": [
+    "data/repo2/file6.txt"
+  ],
+  "folder1": {
+    "folder1_1": {
+      "folder1_1_1": [
+        "data/repo1/file1.txt",
+        "data/repo1/file2.txt"
+      ],
+      "folder1_1_2": [
+          "data/repo1/file3.txt",
+          "data/repo2/file4.txt"
+      ],
+      "folder1_1_3": "data/repo2/file5.txt"
+    }
+  }
+}

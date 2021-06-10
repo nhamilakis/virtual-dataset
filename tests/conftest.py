@@ -5,7 +5,7 @@ import tempfile
 import pytest
 
 # noinspection PyProtectedMember
-import vdataset._cmd as cmd_file
+import vdataset._mount_samples as cmd_file
 
 
 @pytest.fixture(scope="function")
@@ -33,4 +33,11 @@ def yaml_missing_cmd():
 
     # restore yaml mod
     cmd_file.yaml = tmp_yaml_mod
+
+
+@pytest.fixture(scope="session")
+def data_folder():
+    data_dir = Path.cwd() / 'data'
+    assert data_dir.is_dir(), "Data folder should be present to allow tests to be run"
+    yield data_dir
 
