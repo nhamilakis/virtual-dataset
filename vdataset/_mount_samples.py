@@ -1,3 +1,5 @@
+#  Copyright (c) 2021.  Nicolas Hamilakis
+
 import json
 import warnings
 from pathlib import Path

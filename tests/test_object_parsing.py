@@ -1,3 +1,4 @@
+#  Copyright (c) 2021.  Nicolas Hamilakis
 """ Testing input parsing function """
 from pathlib import Path
 

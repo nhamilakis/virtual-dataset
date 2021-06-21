@@ -1,3 +1,5 @@
+#  Copyright (c) 2021.  Nicolas Hamilakis
+
 import argparse
 import sys
 from pathlib import Path

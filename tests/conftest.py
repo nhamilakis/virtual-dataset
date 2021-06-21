@@ -1,3 +1,5 @@
+#  Copyright (c) 2021.  Nicolas Hamilakis
+
 import shutil
 from pathlib import Path
 import tempfile

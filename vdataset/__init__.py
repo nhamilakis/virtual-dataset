@@ -1,3 +1,5 @@
+#  Copyright (c) 2021.  Nicolas Hamilakis
+
 from ._core import (
     mount, unmount,
     FileTarget, FileList, FileTargetList
