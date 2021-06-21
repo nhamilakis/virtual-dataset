@@ -1,5 +1,8 @@
 # Virtual Dataset
 
+
+[![PyPI version](https://badge.fury.io/py/virtual-dataset.svg)](https://badge.fury.io/py/virtual-dataset) [![Test & Build](https://github.com/nhamilakis/virtual-dataset/actions/workflows/test_and_build.yml/badge.svg)](https://github.com/nhamilakis/virtual-dataset/actions/workflows/test_and_build.yml) [![codecov](https://codecov.io/gh/nhamilakis/virtual-dataset/branch/master/graph/badge.svg?token=AH4C4YR7Q5)](https://codecov.io/gh/nhamilakis/virtual-dataset)
+
 A small utility that allows to mount virtually a list of files as a folder.
 
 # Installation 
