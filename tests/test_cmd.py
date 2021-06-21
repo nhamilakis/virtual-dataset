@@ -24,23 +24,26 @@ def test_dict_loading(data_folder):
     obj = cmd_file.load_dict_from_file(data_folder / 'test1.json')
     assert isinstance(obj, (dict, list)), "Object test1.json should load correctly"
 
-    obj = cmd_file.load_dict_from_file(str(data_folder / 'test1.yaml'))
-    assert isinstance(obj, (dict, list)), "Object test1.yaml should load correctly"
+    if cmd_file.yaml is not None:
+        obj = cmd_file.load_dict_from_file(str(data_folder / 'test1.yaml'))
+        assert isinstance(obj, (dict, list)), "Object test1.yaml should load correctly"
+
     with pytest.raises(ValueError):
         _ = cmd_file.load_dict_from_file(data_folder / 'repo1/file1.txt')
 
 
 def test_yaml_loading():
-    file = Path('data/test1.yaml')
-    if not file.is_file():
-        warnings.warn('File loading could not be tested as data folder is missing')
-        return
+    if cmd_file.yaml is not None:
+        file = Path('data/test1.yaml')
+        if not file.is_file():
+            warnings.warn('File loading could not be tested as data folder is missing')
+            return
 
-    item = cmd_file.load_dict_from_file(file)
-    assert isinstance(item, dict), "result should be a dict"
-    assert 'files' in item.keys(), "files should be a key in the dict"
-    assert isinstance(item["files"], list), "dict['files'] should be a list"
-    assert len(item["files"]) == 5, "list should be of size 5"
+        item = cmd_file.load_dict_from_file(file)
+        assert isinstance(item, dict), "result should be a dict"
+        assert 'files' in item.keys(), "files should be a key in the dict"
+        assert isinstance(item["files"], list), "dict['files'] should be a list"
+        assert len(item["files"]) == 5, "list should be of size 5"
 
 
 def test_json_loading(data_folder):

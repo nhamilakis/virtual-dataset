@@ -127,7 +127,7 @@ def test_mount_from_location_simple(data_folder):
             assert item.resolve() in file_list, f"symlink {item} should point to original file in {data_folder}"
 
     unmount(location)
-    assert not location.is_dir(), f"{location=} should have been unmounted"
+    assert not location.is_dir(), f"{location} should have been unmounted"
 
 
 def test_mount_from_location_keep_structure(data_folder):
@@ -143,7 +143,7 @@ def test_mount_from_location_keep_structure(data_folder):
             assert item.resolve() in file_list, f"symlink {item} should point to original file in {data_folder}"
 
     unmount(location)
-    assert not location.is_dir(), f"{location=} should have been unmounted"
+    assert not location.is_dir(), f"{location} should have been unmounted"
 
 
 def test_mount_from_location_only_txt_files(data_folder):
@@ -157,7 +157,7 @@ def test_mount_from_location_only_txt_files(data_folder):
             assert item.resolve() in file_list, f"symlink {item} should point to original file in {data_folder}"
 
     unmount(location)
-    assert not location.is_dir(), f"{location=} should have been unmounted"
+    assert not location.is_dir(), f"{location} should have been unmounted"
 
 
 def test_mount_index_bad_file(data_folder):
@@ -173,7 +173,7 @@ def test_mount_json_simple(data_folder):
     assert location.is_dir(), "mounting point must exist"
 
     unmount(location)
-    assert not location.is_dir(), f"{location=} should have been unmounted"
+    assert not location.is_dir(), f"{location} should have been unmounted"
 
 
 def test_mount_yml_simple(data_folder):
@@ -181,7 +181,7 @@ def test_mount_yml_simple(data_folder):
     assert location.is_dir(), "mounting point must exist"
 
     unmount(location)
-    assert not location.is_dir(), f"{location=} should have been unmounted"
+    assert not location.is_dir(), f"{location} should have been unmounted"
 
 
 def test_mount_json_complex(data_folder):
@@ -189,4 +189,4 @@ def test_mount_json_complex(data_folder):
     assert location.is_dir(), "mounting point must exist"
 
     unmount(location)
-    assert not location.is_dir(), f"{location=} should have been unmounted"
+    assert not location.is_dir(), f"{location} should have been unmounted"
