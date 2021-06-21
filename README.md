@@ -31,6 +31,9 @@ unmount(location)
 
 > All files are created as symbolic links to the originals so no data copy happens on mount
 
+
+> unmount allows a safe option that when turned on will fail to delete the directory if any file in it is not a symlink
+
 ## Mount Input
 
 Input can be of multiple format:
