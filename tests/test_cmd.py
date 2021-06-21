@@ -54,7 +54,3 @@ def test_json_loading(data_folder):
     assert 'files' in item.keys(), "files should be a key in the dict"
     assert isinstance(item["files"], list), "dict['files'] should be a list"
     assert len(item["files"]) == 5, "list should be of size 5"
-
-
-
-

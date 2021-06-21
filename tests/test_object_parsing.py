@@ -5,7 +5,7 @@ from pathlib import Path
 import pytest
 
 # noinspection PyProtectedMember
-from vdataset._mount_samples import key_extractor, load_dict_from_file
+from vdataset._mount_samples import key_extractor
 # noinspection PyProtectedMember
 from vdataset._core import parse_input, FileTarget
 
@@ -102,4 +102,3 @@ def test_dict_extractor():
 
     with pytest.raises(KeyError):
         key_extractor(obj, "nonsense.is.never.a.good.key")
-

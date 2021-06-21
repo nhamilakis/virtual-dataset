@@ -97,7 +97,7 @@ def mount_from_location(location: Union[str, Path], *,
     return mount(files, tmp_prefix=tmp_prefix)
 
 
-def mount_from_index_file(file_location: Union[str, Path], *,  key: Optional[str] = None,
+def mount_from_index_file(file_location: Union[str, Path], *, key: Optional[str] = None,
                           tmp_prefix: Optional[Union[Path, str]] = None):
     """ Wrapper around the mount function to use with a .json/yaml file as input
 
@@ -119,4 +119,3 @@ def mount_from_index_file(file_location: Union[str, Path], *,  key: Optional[str
 
     # return mount location
     return mount(obj, tmp_prefix=tmp_prefix)
-

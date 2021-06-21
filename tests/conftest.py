@@ -40,4 +40,3 @@ def data_folder():
     data_dir = Path.cwd() / 'data'
     assert data_dir.is_dir(), "Data folder should be present to allow tests to be run"
     yield data_dir
-

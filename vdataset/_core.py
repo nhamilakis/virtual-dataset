@@ -53,7 +53,7 @@ def mount(input_files: Union[FileList, Dict], *, tmp_prefix: Optional[Union[Path
         tmp_prefix = Path(tmp_prefix)
 
     if tmp_prefix and not tmp_prefix.is_dir():
-        raise ValueError(f'Prefix must be a valid directory')
+        raise ValueError(f'Prefix {tmp_prefix} must be a valid directory')
 
     # make root dir
     if tmp_prefix:
