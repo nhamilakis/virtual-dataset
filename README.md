@@ -7,7 +7,7 @@ A small utility that allows to mount virtually a list of files as a folder.
 
 # Installation 
 
-Virtual-Dataset can be installed as a normal python package just run `pip install ...`
+Virtual-Dataset can be installed as a normal python package just run `pip install virtual-dataset`
 
 # Usage
 
