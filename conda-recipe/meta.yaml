@@ -1,0 +1,43 @@
+{% set name = "virtual-dataset" %}
+{% set version = "1.0.1" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  git_url: https://github.com/nhamilakis/virtual-dataset.git
+  git_rev: "v1.0.0"
+  git_depth: 1
+
+build:
+  skip: true  # [py2k]
+  entry_points:
+    - vmount=vdataset._cmd:main
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
+
+requirements:
+  host:
+    - python
+    - setuptools
+    - pip
+  run:
+    - python
+
+test:
+  imports:
+    - vdataset
+  commands:
+    - pip check
+    - vmount --help
+  requires:
+    - pip
+
+about:
+  home: https://pypi.org/project/virtual-dataset
+  doc_source_url: https://github.com/nhamilakis/virtual-dataset/blob/master/README.md
+  summary: A small utility that allows to mount virtually a list of files as a folder.
+  license: MIT
+  license_file: LICENCE.txt
