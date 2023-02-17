@@ -1,14 +1,13 @@
 {% set name = "virtual-dataset" %}
-{% set version = "1.0.1" %}
+{% set version = "1.0.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  git_url: https://github.com/nhamilakis/virtual-dataset.git
-  git_rev: "v1.0.0"
-  git_depth: 1
+  url: https://github.com/nhamilakis/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: d37d7757acbc7a2d3ef1d8a8ef658f56405d61859de87fc9fcb45f1ff1560bd7
 
 build:
   skip: true  # [py2k]
